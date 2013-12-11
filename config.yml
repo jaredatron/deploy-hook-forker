@@ -1,0 +1,6 @@
+your-heroku-app-name:
+  slack: https://other.slack.com/services/hooks/heroku?token=INTENTIONALLY_LEFT_BLANK
+  appsignal: https://push.appsignal.com/1/markers/heroku?api_key=INTENTIONALLY_LEFT_BLANK
+  honeybadger: https://api.honeybadger.io/v1/deploys?deploy[environment]=production&api_key=INTENTIONALLY_LEFT_BLANK
+another-heroku-app-name:
+  honeybadger: https://api.honeybadger.io/v1/deploys?deploy[environment]=staging&api_key=INTENTIONALLY_LEFT_BLANK
