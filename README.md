@@ -1,6 +1,6 @@
 # Deploy hook forker
 
-Many hosting services, like Heroku, only allow you to have one HTTP deploy hook. We needed more so we wrote this app. This app accepts a post to /:app and forward the post and it's params to all the urls listed for that app in the config file.
+Many hosting services, like Heroku, only allow you to have one HTTP deploy hook. We needed more so we wrote this app. This app accepts a post to /:app and forwards the post and its params to all the urls listed for that app in the config file.
 
 # Usage
 
@@ -28,7 +28,7 @@ another-heroku-app-name:
 heroku apps:create ${COMPANY_NAME}-deploy-hook-forker
 ```
 
-### Point your apps HTTP deploy hook to the new deploy hook forker app
+### Point your app's HTTP deploy hook to the new deploy hook forker app
 
 ```sh
 heroku addons:add deployhooks:http --url=http://${COMPANY_NAME}-deploy-hook-forker.herokuapp.com
