@@ -32,9 +32,8 @@ post '/' do
     uri = URI.parse(url)
     query = Rack::Utils.parse_query(uri.query)
     query = forwardable_params.merge(query)
-    uri.query = Rack::Utils.build_query(query)
-    logger.info "POSTING TO: #{uri}"
-    HTTParty.post uri.to_s
+    logger.info "POSTING TO: #{uri}, BODY: #{Rack::Utils.build_query(query)}"
+    HTTParty.post( uri.to_s, body: query )
   end
 
   status 201
