@@ -15,11 +15,11 @@ cd deploy-hook-forker
 
 ```yaml
 your-heroku-app-name:
-  slack: https://other.slack.com/services/hooks/heroku?token=INTENTIONALLY_LEFT_BLANK
-  appsignal: https://push.appsignal.com/1/markers/heroku?api_key=INTENTIONALLY_LEFT_BLANK
-  honeybadger: https://api.honeybadger.io/v1/deploys?deploy[environment]=production&api_key=INTENTIONALLY_LEFT_BLANK
+  slack: https://other.slack.com/services/hooks/heroku?token=<%= ENV["SLACK_TOKEN"] %>
+  appsignal: https://push.appsignal.com/1/markers/heroku?api_key=<%= ENV["APP_SIGNAL_API_KEY"] %>
+  honeybadger: https://api.honeybadger.io/v1/deploys?deploy[environment]=production&api_key=<%= ENV["HONEYBADGER_API_KEY"] %>
 another-heroku-app-name:
-  honeybadger: https://api.honeybadger.io/v1/deploys?deploy[environment]=staging&api_key=INTENTIONALLY_LEFT_BLANK
+  honeybadger: https://api.honeybadger.io/v1/deploys?deploy[environment]=staging&api_key=<%= ENV["HONEYBADGER_API_KEY"] %>
 ```
 
 ### Push it up to heroku
