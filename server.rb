@@ -2,6 +2,7 @@ require 'sinatra'
 require 'yaml'
 require 'uri'
 require 'httparty'
+require 'erb'
 
 use Rack::Logger
 
