@@ -2,11 +2,12 @@ require 'sinatra'
 require 'yaml'
 require 'uri'
 require 'httparty'
+require 'erb'
 
 use Rack::Logger
 
 set :config_path, File.expand_path('../config.yml', __FILE__)
-set :config, ->{ YAML.load_file(config_path) }
+set :config, ->{ YAML.load(ERB.new(File.read(config_path)).result) }
 
 helpers do
   def logger
