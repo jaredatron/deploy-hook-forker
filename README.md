@@ -31,7 +31,7 @@ heroku apps:create ${COMPANY_NAME}-deploy-hook-forker
 ### Point your app's HTTP deploy hook to the new deploy hook forker app
 
 ```sh
-heroku addons:add deployhooks:http --url=http://${COMPANY_NAME}-deploy-hook-forker.herokuapp.com
+heroku addons:create deployhooks:http --url=https://${COMPANY_NAME}-deploy-hook-forker.herokuapp.com
 ```
 
 
