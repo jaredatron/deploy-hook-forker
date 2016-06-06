@@ -35,6 +35,37 @@ heroku addons:create deployhooks:http --url=https://${COMPANY_NAME}-deploy-hook-
 ```
 
 
+## Can deploy-hook-forker notify itself when it's deployed?
+
+Yes. Yes it can.
+
+```yaml
+${COMPANY_NAME}-deploy-hook-forker:
+  slack: https://other.slack.com/services/hooks/heroku?token=<%= ENV["SLACK_TOKEN"] %>
+  appsignal: https://push.appsignal.com/1/markers/heroku?api_key=<%= ENV["APP_SIGNAL_API_KEY"] %>
+  honeybadger: https://api.honeybadger.io/v1/deploys?deploy[environment]=production&api_key=<%= ENV["HONEYBADGER_API_KEY"] %>
+```
+
+```sh
+heroku addons:create deployhooks:http --url=https://${COMPANY_NAME}-deploy-hook-forker.herokuapp.com --app ${COMPANY_NAME}-deploy-hook-forker.herokuapp.com
+```
+
+![Xzibit, host of the MTV program “Pimp My Ride”, smiling heartily and looking at the camera. His torso fills the frame. There is text overlaid on the image in all-caps “meme-style” type. The text above him reads “I configured your deploy hook forker to notify itself when it gets deployed.” and the text below him reads: “So you can fork your deploy hooks while you fork your deploy hooks.”](documentation-images/yo-dawg.png)
+
+![Animated image of a man in a black turtleneck overwhelmed from an idea and expressing this by moving his hands toward and away from his head in an “explosion” gesture. His torso fills the frame. In the background is a field of stars. Overlaid over the entire frame is a transparent video of exploding fireworks.](documentation-images/mind-blown.gif)
+
+
+## Development
+
+```ruby
+bundle
+bundle exec rackup
+
+# in another terminal...
+curl http://localhost:9292
+curl -d ... http://localhost:9292
+```
+
 ## References
 
 [Heroku deploy hook docs](https://devcenter.heroku.com/articles/deploy-hooks)
