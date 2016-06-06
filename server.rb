@@ -19,11 +19,20 @@ helpers do
 end
 
 get '/' do
+  if ENV["SECRET"] && params.delete("secret") == ENV["SECRET"]
+    content_type :json
+    status 200
+    return JSON.pretty_generate(settings.config)
+  end
   status 200
   "ok"
 end
 
 post '/' do
+  if ENV["SECRET"] && params.delete("secret") != ENV["SECRET"]
+    status 401
+    return
+  end
   logger.info "RECIEVED POST: #{params.inspect}"
   forwardable_params = params.dup
   forwardable_params.delete('splat')

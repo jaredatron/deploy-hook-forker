@@ -34,6 +34,37 @@ heroku apps:create ${COMPANY_NAME}-deploy-hook-forker
 heroku addons:create deployhooks:http --url=https://${COMPANY_NAME}-deploy-hook-forker.herokuapp.com
 ```
 
+### Securing with a secret
+
+As deployed, anyone on the internet can POST to your deploy-hook-forker instance
+and trick you into thinking your project has been deployed.
+
+To avoid this, you can optionally require a secret be present when your apps POST to your
+deploy-hook-forker instance. To do so, add a secret to your app:
+
+```
+➔ heroku config:set secret=`hexdump /dev/random | head | md5` --app ${COMPANY_NAME}-deploy-hook-forker
+Setting secret and restarting ⬢ company-name-deploy-hook-forker... done, v7
+secret: e4b9c3c27ad5a3b6f0c9b0291eeccc28
+```
+
+Now, when pointing an app's deploy hook to your deploy hook forker, use the secret in the url:
+
+```sh
+heroku addons:create deployhooks:http --url=https://${COMPANY_NAME}-deploy-hook-forker.herokuapp.com?secret=e4b9c3c27ad5a3b6f0c9b0291eeccc28
+```
+
+
+## Development
+
+```ruby
+bundle
+bundle exec rackup
+
+# in another terminal...
+curl http://localhost:9292
+curl -d ... http://localhost:9292
+```
 
 ## References
 
