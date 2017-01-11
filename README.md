@@ -47,7 +47,7 @@ ${COMPANY_NAME}-deploy-hook-forker:
 ```
 
 ```sh
-heroku addons:create deployhooks:http --url=https://${COMPANY_NAME}-deploy-hook-forker.herokuapp.com --app ${COMPANY_NAME}-deploy-hook-forker.herokuapp.com
+heroku addons:create deployhooks:http --url=https://${COMPANY_NAME}-deploy-hook-forker.herokuapp.com --app ${COMPANY_NAME}-deploy-hook-forker
 ```
 
 ![Xzibit, host of the MTV program “Pimp My Ride”, smiling heartily and looking at the camera. His torso fills the frame. There is text overlaid on the image in all-caps “meme-style” type. The text above him reads “I configured your deploy hook forker to notify itself when it gets deployed.” and the text below him reads: “So you can fork your deploy hooks while you fork your deploy hooks.”](documentation-images/yo-dawg.png)
